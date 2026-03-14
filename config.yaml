@@ -1,0 +1,20 @@
+name: "Spotify Dashboard"
+description: "Spotify stats, playback controls, and AI playlist builder"
+version: "1.0.0"
+slug: "spotify_dashboard"
+init: false
+arch:
+  - aarch64
+  - amd64
+ports:
+  8501/tcp: 8501
+options:
+  spotify_client_id: ""
+  spotify_client_secret: ""
+  anthropic_api_key: ""
+schema:
+  spotify_client_id: str
+  spotify_client_secret: str
+  anthropic_api_key: str
+map:
+  - data:rw
