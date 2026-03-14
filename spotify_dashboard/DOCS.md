@@ -19,6 +19,7 @@
 | `spotify_client_id` | Your Spotify app Client ID |
 | `spotify_client_secret` | Your Spotify app Client Secret |
 | `anthropic_api_key` | Your Anthropic API key (for playlist builder) |
+| `spotify_redirect_uri` | OAuth redirect URI — must match the one in your Spotify app (default: `http://127.0.0.1:8502/callback`). If accessing via Tailscale, use your `.ts.net` HTTPS URL instead. |
 
 ## Usage
 

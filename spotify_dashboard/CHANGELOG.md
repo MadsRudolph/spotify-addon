@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Make redirect URI configurable in addon options (for Tailscale / remote access)
+
 ## 1.0.1
 
 - Change host port to 8502 to avoid conflicts
