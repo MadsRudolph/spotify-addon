@@ -9,7 +9,7 @@
 
 1. Go to your [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
 2. Create an app (or use an existing one)
-3. Add `http://127.0.0.1:8501/callback` as a **Redirect URI**
+3. Add `http://127.0.0.1:8502/callback` as a **Redirect URI**
 4. Copy your **Client ID** and **Client Secret**
 
 ## Addon Configuration
@@ -36,5 +36,5 @@ Describe a mood or context (e.g. "late night soldering session, focus, electroni
 ## Troubleshooting
 
 - **"No active Spotify devices found"** — Open Spotify on any device first, then refresh the player tab.
-- **Login redirect fails** — Make sure `http://127.0.0.1:8501/callback` is added as a redirect URI in your Spotify Developer Dashboard.
+- **Login redirect fails** — Make sure `http://127.0.0.1:8502/callback` is added as a redirect URI in your Spotify Developer Dashboard.
 - **Claude API errors** — Verify your Anthropic API key is correct in the addon configuration.
