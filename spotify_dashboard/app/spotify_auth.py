@@ -13,7 +13,7 @@ SCOPES = (
     "playlist-modify-private"
 )
 
-CACHE_PATH = "/data/.spotify_cache"
+CACHE_PATH = os.environ.get("SPOTIFY_CACHE_PATH", "/data/.spotify_cache")
 
 
 def _get_auth_manager() -> SpotifyOAuth:

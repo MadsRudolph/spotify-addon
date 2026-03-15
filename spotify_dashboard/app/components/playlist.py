@@ -45,8 +45,19 @@ def render_playlist(sp: spotipy.Spotify):
         tracks = st.session_state["suggested_tracks"]
 
         st.subheader("Claude's Suggestions")
-        for t in tracks:
-            st.write(f"- **{t['track']}** — {t['artist']}")
+        html = '<div class="list-container">'
+        for i, t in enumerate(tracks, 1):
+            html += f"""
+            <div class="track-row">
+                <div class="rank-num">{i}</div>
+                <div class="track-info">
+                    <div class="track-name">{t['track']}</div>
+                    <div class="track-artist">{t['artist']}</div>
+                </div>
+            </div>
+            """
+        html += '</div>'
+        st.html(html)
 
         # Search Spotify for matches
         if st.session_state.get("matched_tracks") is None:
@@ -130,9 +141,9 @@ def render_playlist(sp: spotipy.Spotify):
                 return
 
             try:
-                user_id = sp.current_user()["id"]
-                new_playlist = sp.user_playlist_create(
-                    user_id, playlist_name, public=False
+                new_playlist = sp._post(
+                    "me/playlists",
+                    payload={"name": playlist_name, "public": False},
                 )
                 sp.playlist_add_items(new_playlist["id"], selected)
                 st.success(f"Playlist **{playlist_name}** created with {len(selected)} tracks!")

@@ -1,0 +1,532 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap");
+
+/* Global Styles */
+html,
+body,
+[class*="css"] {
+  font-family: "Outfit", sans-serif !important;
+}
+
+/* Background Gradient */
+.stApp {
+  background: linear-gradient(
+    135deg,
+    #0f0f13 0%,
+    #151922 50%,
+    #0d1e1c 100%
+  ) !important;
+  color: #ffffff !important;
+}
+
+/* Sidebar Styling - Glassmorphism */
+[data-testid="stSidebar"] {
+  background: rgba(20, 20, 25, 0.4) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+[data-testid="stSidebarNav"] {
+  display: none; /* Hide default nav if we use custom buttons */
+}
+
+/* Navigation Buttons */
+.nav-item {
+  padding: 12px 20px;
+  margin: 6px 0;
+  border-radius: 12px;
+  font-size: 1.1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #a0aec0;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+.nav-active {
+  background: linear-gradient(
+    90deg,
+    rgba(29, 185, 84, 0.15) 0%,
+    rgba(29, 185, 84, 0.05) 100%
+  );
+  color: #1db954;
+  font-weight: 600;
+  border-left: 3px solid #1db954;
+  border-radius: 4px 12px 12px 4px;
+}
+
+/* Streamlit Button Override */
+button[kind="secondary"] {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+button[kind="secondary"]:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  color: #1db954 !important;
+}
+
+button[kind="primary"] {
+  background: #1db954 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3) !important;
+}
+button[kind="primary"]:hover {
+  background: #1ed760 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4) !important;
+}
+
+/* Glassmorphism Cards for Stats */
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.stat-value {
+  font-size: 2.5em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1db954, #1ed760);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.95em;
+  color: #a0aec0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Track/Artist Lists */
+.list-container {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.track-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  gap: 16px;
+}
+.track-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: scale(1.01);
+}
+.rank-num {
+  width: 24px;
+  font-weight: 700;
+  color: #6c757d;
+  font-size: 1.1em;
+  text-align: center;
+}
+.track-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.track-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.track-name {
+  font-weight: 600;
+  font-size: 1.05em;
+  color: #ffffff;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.track-artist {
+  font-size: 0.85em;
+  color: #a0aec0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.track-extra {
+  font-size: 0.85em;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+/* Grid layout for Artist Cards */
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 10px 0;
+}
+.artist-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.artist-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(25, 185, 84, 0.3);
+}
+.artist-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+.artist-card:hover .artist-img {
+  transform: scale(1.05);
+}
+.artist-name {
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Now Playing Card */
+.np-card {
+  background: rgba(20, 20, 25, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.np-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.1), transparent 60%);
+  pointer-events: none;
+}
+.np-art {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.np-info {
+  flex-grow: 1;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.np-title {
+  font-size: 1.8em;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(to right, #fff, #b3b3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.np-artist {
+  font-size: 1.1em;
+  color: #1db954;
+  font-weight: 600;
+  margin: 0;
+}
+.np-album {
+  font-size: 0.9em;
+  color: #888;
+  margin: 0;
+}
+
+/* Progress bar override */
+.stProgress > div > div {
+  background-color: #1db954 !important;
+}
+.stProgress > div {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+}
+
+/* Selectbox styling */
+div[data-baseweb="select"] > div {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: white !important;
+}
+
+/* Text Input, Number Input, Text Area styling */
+div[data-baseweb="input"] > div,
+div[data-baseweb="textarea"] > textarea {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+}
+div[data-baseweb="input"] > div:hover,
+div[data-baseweb="input"] > div:focus-within,
+div[data-baseweb="textarea"] > textarea:hover,
+div[data-baseweb="textarea"] > textarea:focus {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(29, 185, 84, 0.5) !important;
+}
+textarea::placeholder, input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Number input buttons */
+button[data-baseweb="button"] {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: none !important;
+    color: white !important;
+}
+button[data-baseweb="button"]:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Headers */
+h1,
+h2,
+h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+}
+h1 {
+  font-size: 2.5em !important;
+  background: linear-gradient(to right, #ffffff, #a0aec0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Divider */
+hr {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  margin: 2em 0 !important;
+}
+
+/* ===== Wrapped Cards ===== */
+.wrapped-card {
+  border-radius: 24px;
+  padding: 40px 32px;
+  margin-bottom: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.wrapped-gradient-1 {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+}
+.wrapped-gradient-2 {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 40%, #1db954 150%);
+}
+.wrapped-gradient-3 {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 60%, #5b21b6 100%);
+}
+.wrapped-gradient-4 {
+  background: linear-gradient(135deg, #0c1821 0%, #1b4332 50%, #2d6a4f 100%);
+}
+.wrapped-gradient-5 {
+  background: linear-gradient(135deg, #1c1c3c 0%, #3a1c71 50%, #d76d77 150%);
+}
+.wrapped-gradient-6 {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 40%, #2d1f5e 100%);
+  border: 1px solid rgba(29, 185, 84, 0.2);
+}
+
+.wrapped-label {
+  font-size: 0.85em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+.wrapped-hero-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+.wrapped-hero-img.wrapped-round {
+  border-radius: 50%;
+}
+.wrapped-hero-title {
+  font-size: 2em;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.wrapped-hero-subtitle {
+  font-size: 1.1em;
+  color: #1db954;
+  font-weight: 600;
+}
+
+/* Wrapped List Items */
+.wrapped-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  text-align: left;
+  transition: background 0.2s;
+}
+.wrapped-list-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.wrapped-list-rank {
+  font-size: 1.4em;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.3);
+  width: 30px;
+  text-align: center;
+}
+.wrapped-list-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.wrapped-list-img.wrapped-round {
+  border-radius: 50%;
+}
+.wrapped-list-info {
+  flex-grow: 1;
+}
+.wrapped-list-name {
+  font-weight: 600;
+  font-size: 1em;
+  color: #ffffff;
+}
+.wrapped-list-sub {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Wrapped Stats Grid */
+.wrapped-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.wrapped-stat {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px 12px;
+}
+.wrapped-stat-value {
+  font-size: 2.2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1db954, #1ed760);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.wrapped-stat-label {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Wrapped Personality */
+.wrapped-personality-type {
+  font-size: 2.2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1db954, #1ed760, #a3e635);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.wrapped-personality-desc {
+  font-size: 1.05em;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.wrapped-fact {
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 6px 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}

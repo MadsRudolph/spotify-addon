@@ -1,6 +1,6 @@
 name: "Spotify Dashboard"
 description: "Spotify stats, playback controls, and AI playlist builder"
-version: "1.0.2"
+version: "2.0.0"
 slug: "spotify_dashboard"
 init: false
 arch:
